@@ -1,0 +1,69 @@
+[
+  {
+    "greatCircleDistance": {
+      "meter": 1267760.61,
+      "km": 1267.761,
+      "mile": 787.75,
+      "nm": 684.536,
+      "feet": 4159319.57
+    },
+    "departure": {
+      "airport": {
+        "icao": "ESSB",
+        "iata": "BMA",
+        "name": "Stockholm, Stockholm-Bromma",
+        "shortName": "-Bromma",
+        "municipalityName": "Stockholm",
+        "location": {
+          "lat": 59.3544,
+          "lon": 17.941698
+        },
+        "countryCode": "SE"
+      },
+      "scheduledTimeLocal": "2022-10-13 17:30+02:00",
+      "actualTimeLocal": "2022-10-13 17:30+02:00",
+      "scheduledTimeUtc": "2022-10-13 15:30Z",
+      "actualTimeUtc": "2022-10-13 15:30Z",
+      "terminal": "1",
+      "checkInDesk": "4-5",
+      "quality": [
+        "Basic",
+        "Live"
+      ]
+    },
+    "arrival": {
+      "airport": {
+        "icao": "EBBR",
+        "iata": "BRU",
+        "name": "Brussels",
+        "shortName": "Brussels",
+        "municipalityName": "Brussels",
+        "location": {
+          "lat": 50.9014,
+          "lon": 4.484439
+        },
+        "countryCode": "BE"
+      },
+      "scheduledTimeLocal": "2022-10-13 19:45+02:00",
+      "actualTimeLocal": "2022-10-13 19:45+02:00",
+      "scheduledTimeUtc": "2022-10-13 17:45Z",
+      "actualTimeUtc": "2022-10-13 17:45Z",
+      "quality": [
+        "Basic",
+        "Live"
+      ]
+    },
+    "lastUpdatedUtc": "2022-10-12 03:00Z",
+    "number": "SN 2306",
+    "callSign": "BEL7UD",
+    "status": "Expected",
+    "codeshareStatus": "IsOperator",
+    "isCargo": false,
+    "aircraft": {
+      "model": "Airbus A319"
+    },
+    "airline": {
+      "name": "Brussels"
+    }
+  }
+]
