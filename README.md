@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Flight-app created with React & Typescript
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
