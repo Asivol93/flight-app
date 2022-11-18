@@ -25,6 +25,15 @@ function App() {
         </p>
         <input type="text" id="callsign" name="callsign" onChange={(e) => setFlightNumber(e.target.value)} />
         <button type="submit" onClick={() => { onSubmit(flightNumber)}}>Sök</button>
+        {flightData && (
+          <div>
+            <p>{flightData[0].number}</p>
+            <p>{flightData[0].departure.actualTimeLocal}</p>
+            <p>From: {flightData[0].departure.airport.name}</p>
+            <p>{flightData[0].arrival.actualTimeLocal}</p>
+            <p>To: {flightData[0].arrival.airport.name}</p>
+          </div>
+        )}
         
       </header>
     </div>
