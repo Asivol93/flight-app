@@ -4,7 +4,7 @@ import axios from "axios";
 const API_KEY = process.env.REACT_APP_FLIGHT_API_KEY
 
 export const getFlight = (flightNumber: string, setFlightData: React.Dispatch<React.SetStateAction<[]>>) => {
-    const URL = `https://aerodatabox.p.rapidapi.com/flights/callsign/${flightNumber}`
+    const URL = `https://aerodatabox.p.rapidapi.com/flights/number/${flightNumber}`
 
     return new Promise<any[]>(function (fulfill, reject) {
         axios({
@@ -19,12 +19,9 @@ export const getFlight = (flightNumber: string, setFlightData: React.Dispatch<Re
             response => {
                 let items = []
                 items = response.data
-                // fulfill(items)
-                console.log(items)
+                fulfill(items)
                 setFlightData(items)
                
-      
-        // console.log(response.data)
             },
             error => {
               reject(error);
