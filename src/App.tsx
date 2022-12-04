@@ -1,29 +1,36 @@
-import React, { useState } from 'react';
-import './App.css';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import {faPlane, faArrowRight} from "@fortawesome/free-solid-svg-icons"
-import { getFlight } from './API/API';
+import React, { useState } from 'react'
+import './App.css'
+import { View } from './Utilities'
+import FlightDetails from './Views/FlightDetails'
+import StartPage from './Views/StartPage'
 
 const API_KEY = process.env.REACT_APP_FLIGHT_API_KEY
 
 function App() {
-  const [flightNumber, setFlightNumber] = useState<string>("");
-  const [flightData, setFlightData] = useState<any>()
+  const [flightNumber, setFlightNumber] = useState<string>('')
+  const [flightData, setFlightData] = useState<any | undefined>()
+  const [view, setView] = useState<any>(View.START_PAGE)
 
-  const onSubmit = (flightNumber: string) => {
-    getFlight(flightNumber, setFlightData)
-    console.log("data", flightData)
-    
+  function renderView() {
+    if (view === View.START_PAGE) {
+      return (
+        <StartPage
+          flightNumber={flightNumber}
+          setFlightNumber={setFlightNumber}
+          flightData={flightData}
+          setFlightData={setFlightData}
+          setView={setView}
+        />
+      )
+    } else if (view === View.FLIGHT_DETAILS) {
+      return <FlightDetails setView={setView} setFlightData={setFlightData} />
+    }
   }
+
   return (
-    <div className="App">
-      <header className="App-header">
-      <FontAwesomeIcon icon={faPlane} size="4x"/>
-        <form className="input-button-wrapper">
-          <input placeholder="Enter your flight number" pattern="([A-Za-z]{2}[0-9]{3,4}|[A-Za-z][0-9]{5})" required type="text" id="callsign" name="callsign" title="The flightnumber must be in one of the following patterns: A12345, AB123 or AB1234" onChange={(e) => setFlightNumber(e.target.value)}/>
-          <button type="submit" onClick={() => { onSubmit(flightNumber)}}><FontAwesomeIcon icon={faArrowRight}/></button>
-        </form>
-        <div className="input-helper-text">Valid flight numbers: AB123, AB1234 or A12345</div>
+    <div className='App'>
+      <header className='App-header'>
+        {renderView()}
         {flightData && (
           <div>
             <p>{flightData[0].number}</p>
@@ -35,7 +42,7 @@ function App() {
         )}
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
