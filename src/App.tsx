@@ -4,7 +4,7 @@ import { View } from './Utilities'
 import FlightDetails from './Views/FlightDetails'
 import StartPage from './Views/StartPage'
 
-const API_KEY = process.env.REACT_APP_FLIGHT_API_KEY
+
 
 function App() {
   const [flightNumber, setFlightNumber] = useState<string>('')
@@ -23,7 +23,7 @@ function App() {
         />
       )
     } else if (view === View.FLIGHT_DETAILS) {
-      return <FlightDetails setView={setView} setFlightData={setFlightData} />
+      return <FlightDetails setView={setView} setFlightData={setFlightData} flightData={flightData}/>
     }
   }
 
@@ -31,15 +31,7 @@ function App() {
     <div className='App'>
       <header className='App-header'>
         {renderView()}
-        {flightData && (
-          <div>
-            <p>{flightData[0].number}</p>
-            <p>{flightData[0].departure.actualTimeLocal}</p>
-            <p>From: {flightData[0].departure.airport.name}</p>
-            <p>{flightData[0].arrival.actualTimeLocal}</p>
-            <p>To: {flightData[0].arrival.airport.name}</p>
-          </div>
-        )}
+        
       </header>
     </div>
   )
