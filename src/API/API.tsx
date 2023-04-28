@@ -14,7 +14,7 @@ export const getFlight = (
       method: 'get',
       url: URL,
       headers: {
-        'X-RapidAPI-Key': 'd3e6e930d3msh7f736aec27453a5p1730f5jsncebb98f7302d',
+        'X-RapidAPI-Key': API_KEY,
         'X-RapidAPI-Host': 'aerodatabox.p.rapidapi.com',
       },
     }).then(
