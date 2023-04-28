@@ -19,27 +19,32 @@ function FlightDetails({
   console.log("flightData",flightData)
 
 
-const searchNearbyPlaces = async (latitude: number, longitude: number) => {
-  const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+if(flightData) {
+  const searchNearbyPlaces = async (latitude: number, longitude: number) => {
+    const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+  
+    // const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&key=${apiKey}`;
+  const url = `http://localhost:5000/api/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&key=${apiKey}`;
 
-  const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&key=${apiKey}`;
+    const response = await axios.get(url);
+  
+    if (response.status === 200) {
+      const { results } = response.data;
+      console.log("Nearby places:", results);
+      // Do something with the nearby places data
+    } else {
+      console.error("Error searching for nearby places:", response.statusText);
+    }
+  };
+  
+  flightData.forEach((flight: any) => {
+    const latitude = flight.arrival.airport.location.lat;
+    const longitude = flight.arrival.airport.location.lon;
+    searchNearbyPlaces(latitude, longitude);
+  });
+}
 
-  const response = await axios.get(url);
 
-  if (response.status === 200) {
-    const { results } = response.data;
-    console.log("Nearby places:", results);
-    // Do something with the nearby places data
-  } else {
-    console.error("Error searching for nearby places:", response.statusText);
-  }
-};
-
-
-flightData.forEach((flight: any) => {
-  const { latitude, longitude } = flight.arrival.airport.location;
-  searchNearbyPlaces(latitude, longitude);
-});
 
   return (
     <div>
