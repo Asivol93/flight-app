@@ -27,6 +27,7 @@ if(flightData) {
   const url = `http://localhost:5000/api/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&key=${apiKey}`;
 
     const response = await axios.get(url);
+    console.log(response)
   
     if (response.status === 200) {
       const { results } = response.data;

@@ -1,6 +1,9 @@
 import axios from "axios";
 import express from 'express';
 import cors from "cors"
+import * as dotenv from 'dotenv'
+// import dotenv from 'dotenv'
+dotenv.config()
 
 
 const app = express();
@@ -11,6 +14,7 @@ app.use(cors());
 app.get('/api/maps/api/place/nearbysearch/json', async (req, res) => {
   const { latitude, longitude } = req.query;
   const apiKey = process.env.GOOGLE_MAPS_API_KEY;
+  console.log(apiKey)
 
   const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&key=${apiKey}`;
 
@@ -18,6 +22,7 @@ app.get('/api/maps/api/place/nearbysearch/json', async (req, res) => {
     const response = await axios.get(url);
 
     if (response.status === 200) {
+        console.log(response)
       const { results } = response.data;
       console.log("Nearby places:", results);
       // Send the nearby places data in the response
